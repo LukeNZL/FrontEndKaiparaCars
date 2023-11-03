@@ -29,6 +29,7 @@ export const Shop = () => {
     <div className="shop">
       <div className="searchBar">
         <input
+          id="searchBarStyle"
           placeholder="Search our range of cars"
           onChange={(event) => setQuery(event.target.value)}
         />
