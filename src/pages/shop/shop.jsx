@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Categories } from "./categories";
 import { Featured } from "./featured";
-import logo from "../../assets/Logo.png";
+import bmwm5 from "../../assets/m5cs.jpg";
 
 export const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -24,39 +24,68 @@ export const Shop = () => {
   }, []);
 
   const [query, setQuery] = useState("");
+  if (query) {
+    return (
+      <div className="shop">
+        <div className="searchBar">
+          <input
+            id="searchBarStyle"
+            placeholder="Search our range of cars"
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </div>
+        <div id="searchBarStyle">Searching for {query}</div>
+        <div className="products">
+          {products
+            .filter((product) => {
+              if (query === "") {
+                return product;
+              } else if (
+                product.Title.toLowerCase().includes(query.toLowerCase())
+              ) {
+                return product;
+              }
+            })
+            .map((product, index) => (
+              <Featured data={product} />
+            ))}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="shop">
+        <div className="searchBar">
+          <input
+            id="searchBarStyle"
+            placeholder="Search our range of cars"
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </div>
+        <div>
+          <Categories />
+        </div>
+        <div className="featuredImageContainer">
+          <img src={bmwm5} alt="" />
+        </div>
+        <div className="shopTitle">Featured Cars</div>
 
-  return (
-    <div className="shop">
-      <div className="searchBar">
-        <input
-          id="searchBarStyle"
-          placeholder="Search our range of cars"
-          onChange={(event) => setQuery(event.target.value)}
-        />
+        <div className="products">
+          {products
+            .filter((product) => {
+              if (query === "") {
+                return product;
+              } else if (
+                product.Title.toLowerCase().includes(query.toLowerCase())
+              ) {
+                return product;
+              }
+            })
+            .map((product, index) => (
+              <Featured data={product} />
+            ))}
+        </div>
       </div>
-      <div>
-        <Categories />
-      </div>
-      <div className="featuredImageContainer">
-        <img src={logo} alt="" />
-      </div>
-      <div className="shopTitle">Cars</div>
-
-      <div className="products">
-        {products
-          .filter((product) => {
-            if (query === "") {
-              return product;
-            } else if (
-              product.Title.toLowerCase().includes(query.toLowerCase())
-            ) {
-              return product;
-            }
-          })
-          .map((product, index) => (
-            <Featured data={product} />
-          ))}
-      </div>
-    </div>
-  );
+    );
+  }
 };

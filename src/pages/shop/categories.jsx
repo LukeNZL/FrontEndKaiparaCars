@@ -1,8 +1,8 @@
 import React from "react";
-import Sedan from "../../assets/Sedan Icon.png";
-import SUV from "../../assets/Station wagon icon.jpg";
-import Ute from "../../assets/Ute icon.png";
-import Wagon from "../../assets/suv icon.jpg";
+import Sedan from "../../assets/sedan.jpg";
+import SUV from "../../assets/suv.png";
+import Ute from "../../assets/ute.jpg";
+import Wagon from "../../assets/stationwagon.jpg";
 import "./shop.css";
 
 export const Categories = () => {
