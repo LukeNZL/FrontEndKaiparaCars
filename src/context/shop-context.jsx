@@ -9,6 +9,7 @@ export const ShopContext = createContext(null);
 const Listings = JSON.parse(localStorage.getItem("Listing_List"));
 const getDefaultCart = () => {
   let cart = {};
+  console.log("listings", Listings.length);
   for (let i = 1; i < Listings.length + 1; i++) {
     cart[i] = 0;
   }
@@ -24,6 +25,7 @@ export const ShopContextProvider = (props) => {
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
+      console.log(cartItems);
       if (cartItems[item] > 0) {
         let itemInfo = Listings.find((product) => product.id === Number(item));
         totalAmount += cartItems[item] * itemInfo.Price;
