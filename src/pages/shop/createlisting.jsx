@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./shop.css";
 import axios from "axios";
+
 export const CreateListing = () => {
   //cloudinary widget
   var cloudinaryWidget = window.cloudinary.createUploadWidget(
@@ -18,9 +19,9 @@ export const CreateListing = () => {
   );
   //
   const [listingData, setListingData] = useState({
-    headers: {
-      accept: "multipart/form-data",
-    },
+    //headers: {
+    //  accept: "multipart/form-data",
+    //},
     Title: "",
     Description: "",
     Price: 0,
@@ -35,6 +36,7 @@ export const CreateListing = () => {
   };
 
   function create(event) {
+    event.preventDefault();
     listingData.CloudImage = localStorage.getItem("CloudImage");
     var path = listingData.CloudImage;
     var filename = path.replace("https://res.cloudinary.com/dhkzubsxd/", "");
@@ -48,6 +50,25 @@ export const CreateListing = () => {
       console.log("error", error);
     }
   }
+
+  useEffect(() => {
+    const keyDownHandler = (event) => {
+      console.log("User pressed: ", event.key);
+
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        // 👇️ call submit function here
+        create();
+      }
+    };
+
+    document.addEventListener("keydown", keyDownHandler);
+
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, []);
 
   return (
     <>

@@ -19,7 +19,7 @@ export const Footer = () => {
               <img src={logo} alt="" />
             </div>
           </Link>
-          <Link to="/">Account</Link>
+          <Link to="/account">Account</Link>
           <Link to="/createlisting">Create a listing</Link>
           <Link to="/">Saved Listings</Link>
           <Link to="/">Categories</Link>

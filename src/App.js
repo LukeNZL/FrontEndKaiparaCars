@@ -7,8 +7,9 @@ import { CreateListing } from "./pages/shop/createlisting";
 import { Cart } from "./pages/cart/cart";
 import { ShopContextProvider } from "./context/shop-context";
 import { Listing } from "./pages/shop/listing";
-import { Login } from "./pages/account/login";
-import { Register } from "./pages/account/register";
+//import { Login } from "./pages/account/login";
+//import { Register } from "./pages/account/register";
+import { AccountPage } from "./pages/account/accountpage";
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
             <Route path="/cars" element={<Shop />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/listing/:id" element={<Listing />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/login" />
+            <Route path="/register" />
             <Route path="/createlisting" element={<CreateListing />} />
+            <Route path="/account" element={<AccountPage />} />
           </Routes>
           <Footer />
         </Router>

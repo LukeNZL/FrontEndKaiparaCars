@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Categories } from "./categories";
 import { Featured } from "./featured";
-import bmwm5 from "../../assets/m5cs.jpg";
+import bmwm5 from "../../assets/m5csfeature.jpg";
 
 export const Shop = () => {
   const [products, setProducts] = useState([]);
