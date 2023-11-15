@@ -7,6 +7,7 @@ import { CreateListing } from "./pages/shop/createlisting";
 import { Cart } from "./pages/cart/cart";
 import { ShopContextProvider } from "./context/shop-context";
 import { Listing } from "./pages/shop/listing";
+import { Featured } from "./pages/shop/featured";
 //import { Login } from "./pages/account/login";
 //import { Register } from "./pages/account/register";
 import { AccountPage } from "./pages/account/accountpage";
@@ -19,7 +20,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Shop />} />
-            <Route path="/cars" element={<Shop />} />
+            <Route path="/cars" element={<Featured />} />
+
             <Route path="/cart" element={<Cart />} />
             <Route path="/listing/:id" element={<Listing />} />
             <Route path="/login" />

@@ -8,13 +8,15 @@ axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
 
-const client = axios.create({
-  baseURL: "http://127.0.0.1:8000",
+const url = axios.create({
+  //baseURL: "http://127.0.0.1:8000",
+  baseURL:
+    "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com",
 });
 
 export const AccountPage = () => {
   const [currentUser, setCurrentUser] = useState();
-  const [registrationToggle, setRegistrationToggle] = useState(false);
+  const [registrationFormToggle, setregistrationFormToggle] = useState(false);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +26,7 @@ export const AccountPage = () => {
   });
 
   useEffect(() => {
-    client
+    url
       .get("/authapi/user")
       .then(function (res) {
         setCurrentUser(true);
@@ -36,23 +38,23 @@ export const AccountPage = () => {
   }, []);
 
   function update_form_btn() {
-    if (registrationToggle) {
-      setRegistrationToggle(false);
+    if (registrationFormToggle) {
+      setregistrationFormToggle(false);
     } else {
-      setRegistrationToggle(true);
+      setregistrationFormToggle(true);
     }
   }
 
-  function submitRegistration(e) {
+  function sendRegistrationForm(e) {
     e.preventDefault();
-    client
+    url
       .post("/authapi/register", {
         email: email,
         username: username,
         password: password,
       })
       .then(function (res) {
-        client
+        url
           .post("/authapi/login", {
             email: email,
             password: password,
@@ -63,9 +65,9 @@ export const AccountPage = () => {
       });
   }
 
-  function submitLogin(e) {
-    e.preventDefault();
-    client
+  function sendLoginForm(e) {
+    //e.preventDefault();
+    url
       .post("/authapi/login", {
         email: email,
         password: password,
@@ -75,21 +77,24 @@ export const AccountPage = () => {
       });
   }
 
-  function submitLogout(e) {
+  function sendLogoutForm(e) {
     e.preventDefault();
-    client
-      .post("/authapi/logout", { withCredentials: true })
-      .then(function (res) {
-        setCurrentUser(false);
-      });
+    url.post("/authapi/logout", { withCredentials: true }).then(function (res) {
+      setCurrentUser(false);
+    });
   }
 
   if (currentUser) {
     return (
       <div className="login-page">
         <div className="form">
-          <h2>hello {userData.username}</h2>
-          <form onSubmit={(e) => submitLogout(e)}>
+          <h2>Logged in as: {userData.username}</h2>
+          <h5>Email: {userData.email}</h5>
+          <a href="/createlisting">
+            <button className="inputStyle">Create a Listing</button>
+          </a>
+          <p></p>
+          <form onSubmit={(e) => sendLogoutForm(e)}>
             <button type="submit" className="inputStyle">
               Log out
             </button>
@@ -100,13 +105,13 @@ export const AccountPage = () => {
   }
   return (
     <div>
-      {registrationToggle ? (
+      {registrationFormToggle ? (
         <>
           <div className="login-page">
             <div className="form">
               <form
                 class="register-form"
-                onSubmit={(event) => submitRegistration(event)}
+                onSubmit={(event) => sendRegistrationForm(event)}
               >
                 <input
                   type="text"
@@ -150,7 +155,10 @@ export const AccountPage = () => {
         <>
           <div class="login-page">
             <div class="form">
-              <form class="login-form" onSubmit={(event) => submitLogin(event)}>
+              <form
+                class="login-form"
+                onSubmit={(event) => sendLoginForm(event)}
+              >
                 <input
                   type="text"
                   placeholder="email address"

@@ -1,8 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-import { PRODUCTS } from "../products";
-import { Product } from "../pages/shop/product";
+
 import { Shop } from "../pages/shop/shop";
-import axios from "axios";
 
 export const ShopContext = createContext(null);
 

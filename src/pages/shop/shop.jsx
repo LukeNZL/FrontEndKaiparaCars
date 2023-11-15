@@ -1,8 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-import { Product } from "./product";
 import "./shop.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { Categories } from "./categories";
 import { Featured } from "./featured";
 import bmwm5 from "../../assets/m5csfeature.jpg";
@@ -10,7 +8,10 @@ import bmwm5 from "../../assets/m5csfeature.jpg";
 export const Shop = () => {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
-    const response = await axios.get("http://127.0.0.1:8000/api/");
+    //const response = await axios.get("http://127.0.0.1:8000/api/");
+    const response = await axios.get(
+      "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com/api/"
+    );
     setProducts(response.data);
     let listingarr = [];
     for (let i = 0; i < response.data.length; i++) {
