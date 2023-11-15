@@ -9,9 +9,9 @@ axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
 
 const url = axios.create({
-  //baseURL: "http://127.0.0.1:8000",
-  baseURL:
-    "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com",
+  baseURL: "http://127.0.0.1:8000",
+  //baseURL:
+  // "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com",
 });
 
 export const AccountPage = () => {

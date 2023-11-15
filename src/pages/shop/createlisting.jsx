@@ -44,11 +44,11 @@ export const CreateListing = () => {
     console.log("data1", listingData);
     //console.log("data2", listingData.Title);
     try {
-      //axios.post("http://127.0.0.1:8000/api/", listingData);
-      axios.post(
-        "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com/api/",
-        listingData
-      );
+      axios.post("http://127.0.0.1:8000/api/", listingData);
+      //axios.post(
+      //  "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com/api/",
+      //  listingData
+      //);
     } catch (error) {
       console.log("error", error);
     }
