@@ -1,4 +1,8 @@
-#inputStyle {
+#noStyleButtons {
+  text-decoration: none;
+  color: black;
+}
+.inputStyle {
   border-radius: 20px;
 }
 .login-page {

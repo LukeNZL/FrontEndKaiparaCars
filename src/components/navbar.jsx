@@ -19,7 +19,7 @@ export const Navbar = () => {
 
         <div className="links">
           <link rel="stylesheet" href="" />
-          <Link to="/login">
+          <Link to="/account">
             <UserCircle size={32} />
           </Link>
           <Link to="/cart">

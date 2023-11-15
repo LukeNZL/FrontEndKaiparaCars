@@ -22,9 +22,14 @@
 
 .cartItem .description {
   width: 100%;
-  font-size: 30px;
+  font-size: 2em;
 }
-
+.cartPrice {
+  font-size: 0.8em;
+}
+.cartDescription {
+  font-size: 0.5em;
+}
 .countHandler input {
   width: 40px;
   text-align: center;

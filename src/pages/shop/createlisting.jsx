@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./shop.css";
 import axios from "axios";
+
 export const CreateListing = () => {
   //cloudinary widget
   var cloudinaryWidget = window.cloudinary.createUploadWidget(
@@ -18,9 +19,9 @@ export const CreateListing = () => {
   );
   //
   const [listingData, setListingData] = useState({
-    headers: {
-      accept: "multipart/form-data",
-    },
+    //headers: {
+    //  accept: "multipart/form-data",
+    //},
     Title: "",
     Description: "",
     Price: 0,
@@ -43,11 +44,34 @@ export const CreateListing = () => {
     console.log("data1", listingData);
     //console.log("data2", listingData.Title);
     try {
-      axios.post("http://127.0.0.1:8000/api/", listingData);
+      //axios.post("http://127.0.0.1:8000/api/", listingData);
+      axios.post(
+        "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com/api/",
+        listingData
+      );
     } catch (error) {
       console.log("error", error);
     }
   }
+
+  useEffect(() => {
+    const keyDownHandler = (event) => {
+      console.log("User pressed: ", event.key);
+
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        // 👇️ call submit function here
+        create();
+      }
+    };
+
+    document.addEventListener("keydown", keyDownHandler);
+
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, []);
 
   return (
     <>
@@ -92,7 +116,7 @@ export const CreateListing = () => {
               Upload Image Here
             </button>
             <button id="inputStyle" type="submit" name="createListing">
-              create listing
+              <a href={"/"}>create listing</a>
             </button>
             <p className="message">
               wrong button?

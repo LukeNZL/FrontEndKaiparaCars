@@ -11,18 +11,16 @@ export const Featured = (props) => {
   const image = "https://res.cloudinary.com/dhkzubsxd/" + CloudImage;
   return (
     <>
-      <div className="product">
-        <img src={image} alt="no image" />
-        <div className="description">
-          <p>
-            <b>{Title}</b> <br />${Price} | {Description}
-          </p>
+      <a id="carsListLink" href={"/listing/" + id}>
+        <div className="product">
+          <img src={image} alt="no image" />
+          <div className="description">
+            <p>
+              <b>{Title}</b> | ${Price}
+            </p>
+          </div>
         </div>
-        <button className="addToCartBttn" onClick={() => addToCart(id)}>
-          Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
-        </button>
-        <Link to={"/listing/" + id}>Details</Link>
-      </div>
+      </a>
     </>
   );
 };
