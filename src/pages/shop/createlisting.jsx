@@ -56,7 +56,7 @@ export const CreateListing = () => {
 
   useEffect(() => {
     const keyDownHandler = (event) => {
-      console.log("User pressed: ", event.key);
+      //console.log("User pressed: ", event.key);
 
       if (event.key === "Enter") {
         event.preventDefault();

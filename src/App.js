@@ -15,23 +15,21 @@ import { AccountPage } from "./pages/account/accountpage";
 function App() {
   return (
     <div className="App">
-      <ShopContextProvider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Shop />} />
-            <Route path="/cars" element={<Featured />} />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Shop />} />
+          <Route path="/cars" element={<Featured />} />
 
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/listing/:id" element={<Listing />} />
-            <Route path="/login" />
-            <Route path="/register" />
-            <Route path="/createlisting" element={<CreateListing />} />
-            <Route path="/account" element={<AccountPage />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </ShopContextProvider>
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/listing/:id" element={<Listing />} />
+          <Route path="/login" />
+          <Route path="/register" />
+          <Route path="/createlisting" element={<CreateListing />} />
+          <Route path="/account" element={<AccountPage />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
