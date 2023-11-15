@@ -5,6 +5,7 @@ import { Footer } from "./components/footer";
 import { Shop } from "./pages/shop/shop";
 import { CreateListing } from "./pages/shop/createlisting";
 import { Cart } from "./pages/cart/cart";
+import { ShopContextProvider } from "./context/shop-context";
 import { Listing } from "./pages/shop/listing";
 import { Featured } from "./pages/shop/featured";
 //import { Login } from "./pages/account/login";
@@ -14,21 +15,23 @@ import { AccountPage } from "./pages/account/accountpage";
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Shop />} />
-          <Route path="/cars" element={<Featured />} />
+      <ShopContextProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Shop />} />
+            <Route path="/cars" element={<Featured />} />
 
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/listing/:id" element={<Listing />} />
-          <Route path="/login" />
-          <Route path="/register" />
-          <Route path="/createlisting" element={<CreateListing />} />
-          <Route path="/account" element={<AccountPage />} />
-        </Routes>
-        <Footer />
-      </Router>
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/listing/:id" element={<Listing />} />
+            <Route path="/login" />
+            <Route path="/register" />
+            <Route path="/createlisting" element={<CreateListing />} />
+            <Route path="/account" element={<AccountPage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ShopContextProvider>
     </div>
   );
 }
