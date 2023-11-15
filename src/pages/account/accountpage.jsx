@@ -9,9 +9,9 @@ axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
 
 const url = axios.create({
-  baseURL: "http://127.0.0.1:8000",
-  //baseURL:
-  // "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com",
+  //baseURL: "http://127.0.0.1:8000",
+  baseURL:
+    "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com",
 });
 
 export const AccountPage = () => {
@@ -110,7 +110,7 @@ export const AccountPage = () => {
           <div className="login-page">
             <div className="form">
               <form
-                class="register-form"
+                className="register-form"
                 onSubmit={(event) => sendRegistrationForm(event)}
               >
                 <input
@@ -141,9 +141,9 @@ export const AccountPage = () => {
                 <button type="submit" name="register" className="inputStyle">
                   create
                 </button>
-                <p class="message">
+                <p className="message">
                   Already registered?
-                  <a class="message" onClick={update_form_btn}>
+                  <a className="message" onClick={update_form_btn}>
                     login
                   </a>
                 </p>
@@ -153,10 +153,10 @@ export const AccountPage = () => {
         </>
       ) : (
         <>
-          <div class="login-page">
-            <div class="form">
+          <div className="login-page">
+            <div className="form">
               <form
-                class="login-form"
+                className="login-form"
                 onSubmit={(event) => sendLoginForm(event)}
               >
                 <input
@@ -178,9 +178,9 @@ export const AccountPage = () => {
                 <button type="submit" name="login" className="inputStyle">
                   login
                 </button>
-                <p class="message">
+                <p className="message">
                   Not registered?{" "}
-                  <a class="message" onClick={update_form_btn}>
+                  <a className="message" onClick={update_form_btn}>
                     register
                   </a>
                 </p>
