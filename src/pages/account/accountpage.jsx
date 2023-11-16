@@ -73,6 +73,7 @@ export const AccountPage = () => {
         password: password,
       })
       .then(function (res) {
+        console.log("res", res);
         setCurrentUser(true);
       });
   }
