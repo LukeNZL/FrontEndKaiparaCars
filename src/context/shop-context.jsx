@@ -5,9 +5,13 @@ import { Shop } from "../pages/shop/shop";
 export const ShopContext = createContext(null);
 
 const Listings = JSON.parse(localStorage.getItem("Listing_List"));
-const getDefaultCart = (e) => {
-  e.preventDefault();
+const getDefaultCart = () => {
   let cart = {};
+
+  if (Listings === null) {
+    return cart;
+  }
+
   console.log("listings", Listings.length);
   for (let i = 1; i < Listings.length + 1; i++) {
     cart[i] = 0;
