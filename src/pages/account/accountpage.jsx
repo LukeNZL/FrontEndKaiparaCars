@@ -45,7 +45,7 @@ export const AccountPage = () => {
   }
 
   function sendRegistrationForm(e) {
-    e.preventDefault();
+    //e.preventDefault();
     url
       .post("/authapi/register", {
         email: email,
@@ -65,7 +65,7 @@ export const AccountPage = () => {
   }
 
   function sendLoginForm(e) {
-    e.preventDefault();
+    //e.preventDefault();
     url
       .post("/authapi/login", {
         email: email,
