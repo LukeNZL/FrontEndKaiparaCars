@@ -12,8 +12,7 @@ export const Listing = () => {
   const getListing = async () => {
     //const response = await axios.get("http://127.0.0.1:8000/api/" + id);
     const response = await axios.get(
-      "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com/api/" +
-        id
+      "https://backend.kaiparacars.com/api/" + id
     );
     setListing(response.data);
   };

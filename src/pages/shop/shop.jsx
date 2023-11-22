@@ -9,9 +9,7 @@ export const Shop = () => {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     //const response = await axios.get("http://127.0.0.1:8000/api/");
-    const response = await axios.get(
-      "http://kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com/api/"
-    );
+    const response = await axios.get("https://backend.kaiparacars.com/api/");
     setProducts(response.data);
     let listingarr = [];
     for (let i = 0; i < response.data.length; i++) {
