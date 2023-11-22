@@ -66,7 +66,7 @@ export const AccountPage = () => {
   }
 
   function sendLoginForm(e) {
-    //e.preventDefault();
+    e.preventDefault();
     url
       .post("/authapi/login", {
         email: email,
