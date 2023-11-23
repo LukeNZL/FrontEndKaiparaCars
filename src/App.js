@@ -37,7 +37,28 @@ function App() {
   }, []);
 
   return message ? (
-    <Message message={message} />
+    <>
+      <div className="App">
+        <Message message={message} />
+        <ShopContextProvider>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Shop />} />
+              <Route path="/cars" element={<Featured />} />
+
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/listing/:id" element={<Listing />} />
+              <Route path="/login" />
+              <Route path="/register" />
+              <Route path="/createlisting" element={<CreateListing />} />
+              <Route path="/account" element={<AccountPage />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </ShopContextProvider>
+      </div>
+    </>
   ) : (
     <>
       <div className="App">
