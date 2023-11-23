@@ -30,7 +30,14 @@ export const Cart = () => {
         <div className="checkout">
           <p>Subtotal: ${totalAmount}</p>
           <button onClick={() => navigate("/")}> Continue Shopping</button>
-          <button>Checkout </button>
+          <form
+            action="https://backend.kaiparacars.com/create-checkout-session/"
+            method="POST"
+          >
+            <button className="addToCartBttn" type="submit">
+              Checkout
+            </button>
+          </form>
         </div>
       ) : (
         <>
