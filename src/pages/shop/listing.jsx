@@ -68,6 +68,7 @@ export const Listing = () => {
           >
             <input type="hidden" name="itemid" value={id} />
             <input type="hidden" name="price" value={listing.Price} />
+            <input type="hidden" name="name" value={listing.Title} />
 
             <button className="addToCartBttn" type="submit">
               Buy Now
