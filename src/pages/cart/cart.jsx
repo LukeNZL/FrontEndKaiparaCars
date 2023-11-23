@@ -32,8 +32,10 @@ export const Cart = () => {
           <button onClick={() => navigate("/")}> Continue Shopping</button>
           <form
             action="https://backend.kaiparacars.com/create-checkout-session/"
+            //action="http://127.0.0.1:8000/create-checkout-session/"
             method="POST"
           >
+            <input type="hidden" name="price" value={totalAmount} />
             <button className="addToCartBttn" type="submit">
               Checkout
             </button>

@@ -61,10 +61,13 @@ export const Listing = () => {
             Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
           </button>
           <form
+            //action="http://127.0.0.1:8000/create-checkout-session/"
             action="https://backend.kaiparacars.com/create-checkout-session/"
+
             method="POST"
           >
             <input type="hidden" name="itemid" value={id} />
+            <input type="hidden" name="price" value={listing.Price} />
 
             <button className="addToCartBttn" type="submit">
               Buy Now
