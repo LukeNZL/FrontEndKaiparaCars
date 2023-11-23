@@ -62,17 +62,19 @@ export const Listing = () => {
           <button className="addToCartBttn" onClick={() => addToCart(id)}>
             Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
           </button>
+          <form
+            action="https://backend.kaiparacars.com/create-checkout-session/"
+            method="POST"
+          >
+            <input type="hidden" name="itemid" value={id} />
+
+            <button className="addToCartBttn" type="submit">
+              Buy Now
+            </button>
+          </form>
         </div>
-        <form
-          action="https://backend.kaiparacars.com/create-checkout-session/"
-          method="POST"
-        >
-          <button type="submit">Checkout</button>
-        </form>
-        <div id="listingDescription">
-          Description: <br />
-          {listing.Description}
-        </div>
+
+        <div id="listingDescription">{listing.Description}</div>
       </div>
     </>
   );
